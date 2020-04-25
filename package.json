@@ -8,7 +8,8 @@
   "private": true,
   "scripts": {
     "start:dev": "webpack-dev-server --mode development",
-    "lint": "eslint src/**/*.js*"
+    "lint": "eslint src/**/*.js*",
+    "test:unit": "jest --testPathPattern=test\\.jsx$"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -16,6 +17,8 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -25,6 +28,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "2.5.0",
     "html-webpack-plugin": "^4.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.4.0",
     "prettier": "^2.0.5",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
@@ -36,5 +41,13 @@
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./src/testsSetup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss|sass)$": "identity-obj-proxy"
+    }
   }
 }
