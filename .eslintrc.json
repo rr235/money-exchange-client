@@ -1,0 +1,6 @@
+{
+  "extends": ["airbnb", "airbnb/hooks", "plugin:prettier/recommended"],
+  "globals": {
+    "document": false
+  }
+}
