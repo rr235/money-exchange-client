@@ -1,0 +1,18 @@
+$button-color: #0666eb;
+$color: #fff;
+
+.button {
+  background-color: $button-color;
+  border-radius: 2rem;
+  border-style: none;
+  border-width: initial;
+  color: $color;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  letter-spacing: -0.025em;
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  transition: all 0.2s ease 0s;
+}
