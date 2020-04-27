@@ -13,8 +13,6 @@ class Main extends Component {
     ],
   };
 
-  // const [options, setOptions] = useState(allOptions);
-
   getOptions = () => {
     return this.props.pockets.map(({ code }) => ({ text: code, value: code }));
   };
@@ -25,7 +23,7 @@ class Main extends Component {
       value,
       selected: value === selectedValue,
     }));
-    setOptions(updatedOptions);
+    this.setState({ options: updatedOptions });
   };
 
   render() {
