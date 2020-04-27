@@ -2,25 +2,12 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from './dropdown.styles.scss';
 
-type Option = {
-  value: number | string;
-  text: string;
-  selected?: boolean;
-  onClick?(value: Option): void;
-};
-
-type props = {
-  className?: string;
-  options: Option[];
-  onSelect?(value: Option): void;
-};
-
-const getSelection = (options: Option[]): string => {
+const getSelection = (options) => {
   const selection = options.filter((option) => option.selected);
   return selection.length ? selection[0].text : options[0].text;
 };
 
-const DropdownListItem = ({ value, text, selected, onClick }: Option) => {
+const DropdownListItem = ({ value, text, selected, onClick }) => {
   const onClickHandler = () => {
     onClick({ value, text });
   };
@@ -39,15 +26,15 @@ const DropdownListItem = ({ value, text, selected, onClick }: Option) => {
   );
 };
 
-const Dropdown = ({ options, onSelect, className }: props) => {
-  const [showOptions, setShowOptions] = useState<boolean>(false);
+const Dropdown = ({ options, onSelect, className }) => {
+  const [showOptions, setShowOptions] = useState(false);
 
   const optionsClassName = classNames(styles.options, {
     [styles.show]: showOptions,
   });
   const buttonClassName = classNames(styles.button, className);
 
-  const onOptionSelectHandler = ({ text, value }: Option) => {
+  const onOptionSelectHandler = ({ text, value }) => {
     setShowOptions(false);
     onSelect({ text, value });
   };
@@ -68,7 +55,7 @@ const Dropdown = ({ options, onSelect, className }: props) => {
         {getSelection(options)}
       </button>
       <ul role="listbox" className={optionsClassName}>
-        {options.map(({ value, text, selected }: Option) => (
+        {options.map(({ value, text, selected }) => (
           <DropdownListItem
             value={value}
             text={text}

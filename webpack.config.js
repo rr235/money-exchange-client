@@ -11,9 +11,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
-        use: ['ts-loader'],
+        use: ['babel-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -52,6 +52,6 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx'],
   },
 };

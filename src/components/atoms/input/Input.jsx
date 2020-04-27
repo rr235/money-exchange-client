@@ -2,17 +2,10 @@ import React, { useState, FormEvent } from 'react';
 import classNames from 'classnames';
 import styles from './input.styles.scss';
 
-type Props = {
-  id: string;
-  label: string;
-  className?: string;
-  onChange?(e: FormEvent<HTMLInputElement>): () => void;
-};
-
-const Input = ({ label, id, onChange, className }: Props) => {
+const Input = ({ label, id, onChange, className }) => {
   const [input, setInput] = useState('');
 
-  const onChangeHandler = (e: FormEvent<HTMLInputElement>): void => {
+  const onChangeHandler = (e) => {
     setInput(e.currentTarget.value);
     if (onChange) {
       onChange(e);

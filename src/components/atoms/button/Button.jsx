@@ -2,14 +2,7 @@ import React, { Component, MouseEvent } from 'react';
 import classNames from 'classnames';
 import styles from './button.styles.scss';
 
-type props = {
-  className?: string;
-  onClick?(event: MouseEvent): () => void;
-};
-
-type state = {};
-
-class Button extends Component<props, state> {
+class Button extends Component {
   render() {
     const { children, className, onClick } = this.props;
     return (
