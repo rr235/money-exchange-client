@@ -1,9 +1,18 @@
 
 $primary-color: #0666eb;
+$min-width: 8rem;
+$hover-color: #f3f4f5;
+$button-radius: 0.5rem;
+$option-radius: 0.5rem;
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
 
 .button {
   border: 2px solid $primary-color;
-  border-radius: 0.5rem;
+  border-radius: $button-radius;
   color: $primary-color;
   cursor: pointer;
   display: inline-block;
@@ -11,7 +20,7 @@ $primary-color: #0666eb;
   letter-spacing: -0.025em;
   line-height: 1.5rem;
   margin-bottom: 0.5rem;
-  min-width: 8rem;
+  min-width: $min-width;
   padding: 0.625rem 1.5rem;
   transition: all 0.2s ease 0s;
   
@@ -31,13 +40,35 @@ $primary-color: #0666eb;
 .options {
   background-color: #fff;
   border: 1px solid $primary-color;
-  border-radius: 0.5rem;
+  border-radius: $option-radius;
   display: none;
+  list-style: none;
   margin: 0;
+  min-width: $min-width;
   padding: 0;
   position: absolute;
 
+  
+
+  .option {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background-color: $hover-color
+    }
+
+    &:first-child {
+      border-radius: $option-radius $option-radius 0 0;
+    }
+
+    &:last-child {
+      border-radius:  0 0 $option-radius $option-radius;
+    }
+  }
+
   &.show {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }

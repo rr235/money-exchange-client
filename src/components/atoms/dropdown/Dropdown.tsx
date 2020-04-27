@@ -32,6 +32,7 @@ const DropdownListItem = ({ value, text, selected, onClick }: Option) => {
       aria-selected={selected}
       key={value}
       onClick={onClickHandler}
+      className={styles.option}
     >
       {text}
     </li>
@@ -47,6 +48,7 @@ const Dropdown = ({ options, onSelect, className }: props) => {
   const buttonClassName = classNames(styles.button, className);
 
   const onOptionSelectHandler = ({ text, value }: Option) => {
+    setShowOptions(false);
     onSelect({ text, value });
   };
 
@@ -56,7 +58,7 @@ const Dropdown = ({ options, onSelect, className }: props) => {
   };
 
   return (
-    <>
+    <div className={styles.dropdown}>
       <button
         type="button"
         aria-haspopup="listbox"
@@ -76,7 +78,7 @@ const Dropdown = ({ options, onSelect, className }: props) => {
           />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 
