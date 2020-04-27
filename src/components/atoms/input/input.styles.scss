@@ -1,0 +1,14 @@
+
+$border-color: rgb(167, 167, 167);
+
+.input {
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  
+  &:disabled {
+    background-color: $border-color;
+  }
+}

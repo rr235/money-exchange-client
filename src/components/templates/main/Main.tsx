@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './main.styles.scss';
 import Button from '../../atoms/button';
+import Input from '../../atoms/input';
 import Dropdown from '../../atoms/dropdown';
 
 type Option = {
@@ -31,6 +32,7 @@ const Main = () => {
     <div className={styles.main}>
       <Button>Button</Button>
       <Dropdown options={options} onSelect={selectionHandler} />
+      <Input label="foo" id="txtFoo" />
     </div>
   );
 };
