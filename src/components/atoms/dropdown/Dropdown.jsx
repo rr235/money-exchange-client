@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from './dropdown.styles.scss';
 
-const getSelection = (options) => {
-  const selection = options.filter((option) => option.selected);
+const getSelection = (options, selectedValue) => {
+  const selection = options.filter((option) => option.value === selectedValue);
   return selection.length ? selection[0].text : options[0].text;
 };
 
@@ -26,7 +26,7 @@ const DropdownListItem = ({ value, text, selected, onClick }) => {
   );
 };
 
-const Dropdown = ({ options, onSelect, className }) => {
+const Dropdown = ({ options, onSelect, className, selectedValue }) => {
   const [showOptions, setShowOptions] = useState(false);
 
   const optionsClassName = classNames(styles.options, {
@@ -52,7 +52,7 @@ const Dropdown = ({ options, onSelect, className }) => {
         onClick={onClickHandler}
         className={styles.button}
       >
-        {getSelection(options)}
+        {getSelection(options, selectedValue)}
       </button>
       <ul role="listbox" className={optionsClassName}>
         {options.map(({ value, text, selected }) => (

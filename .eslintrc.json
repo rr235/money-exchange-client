@@ -9,5 +9,8 @@
     "beforeAll": false,
     "beforeEach": false,
     "document": false
+  },
+  "rules": {
+    "no-shadow": 1
   }
 }
