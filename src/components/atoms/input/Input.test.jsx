@@ -39,7 +39,7 @@ describe('Input ', () => {
 
 describe('Input (number) - Functionality', () => {
   let component;
-  beforeAll(() => {
+  beforeEach(() => {
     act(() => {
       component = shallow(<Input label="label" id="id" type="number" />);
     });

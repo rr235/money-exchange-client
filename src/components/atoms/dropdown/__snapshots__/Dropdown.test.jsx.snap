@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should render correctly 1`] = `
+<div
+  className="dropdown"
+>
+  <button
+    aria-haspopup="listbox"
+    className="button"
+    onClick={[Function]}
+    type="button"
+  >
+    option2
+  </button>
+  <ul
+    className="options"
+    role="listbox"
+  >
+    <li
+      aria-selected={false}
+      className="option"
+      data-value="val1"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="option"
+      tabIndex="0"
+    >
+      option1
+    </li>
+    <li
+      aria-selected={false}
+      className="option"
+      data-value="val2"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="option"
+      tabIndex="0"
+    >
+      option2
+    </li>
+    <li
+      aria-selected={false}
+      className="option"
+      data-value="val3"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="option"
+      tabIndex="0"
+    >
+      option3
+    </li>
+  </ul>
+</div>
+`;
