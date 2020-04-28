@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, string, shape, number, arrayOf } from 'prop-types';
+import { func, string, shape, number, arrayOf, oneOfType } from 'prop-types';
 import Input from '../../atoms/input';
 import Dropdown, { optionsShape } from '../../atoms/dropdown';
 import styles from './currencySelector.styles.scss';
@@ -11,6 +11,7 @@ const CurrencySelector = ({
   label,
   id,
   selectedValue,
+  inputValue,
 }) => (
   <div>
     {options.length && (
@@ -27,7 +28,13 @@ const CurrencySelector = ({
       {selectedValue.symbol}
       {selectedValue.balance}
     </span>
-    <Input label={label} id={`input-${id}`} onChange={onChange} type="number" />
+    <Input
+      label={label}
+      id={`input-${id}`}
+      onChange={onChange}
+      type="number"
+      value={inputValue}
+    />
   </div>
 );
 
@@ -43,6 +50,7 @@ CurrencySelector.propTypes = {
     symbol: string,
     balance: number,
   }),
+  inputValue: oneOfType([string, number]),
 };
 
 CurrencySelector.defaultProps = {
@@ -50,6 +58,7 @@ CurrencySelector.defaultProps = {
   onChange: () => {},
   label: '',
   selectedValue: {},
+  inputValue: null,
 };
 
 export default CurrencySelector;

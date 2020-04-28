@@ -76,6 +76,7 @@ class Main extends Component {
               onSelect={this.selectionFromHandler}
               selectedValue={fromPocket.pocket}
               onChange={this.setAmountFromHandler}
+              inputValue={fromPocket.amount}
             />
           </div>
           <div className={styles.selector}>
@@ -86,6 +87,7 @@ class Main extends Component {
               onSelect={this.selectionToHandler}
               selectedValue={toPocket.pocket}
               onChange={this.setAmountToHandler}
+              inputValue={toPocket.amount}
             />
           </div>
           <Button id="btnExchange" className={styles.button} type="submit">
