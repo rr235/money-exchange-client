@@ -11,14 +11,6 @@ import {
 } from '../../../actions';
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fromValue: undefined,
-      toValue: undefined,
-    };
-  }
-
   componentDidMount() {
     const { fetchPockets } = this.props;
     fetchPockets();
@@ -38,7 +30,6 @@ class Main extends Component {
     const { pockets, selectPocketFrom } = this.props;
     const selectedValue = pockets.find((pocket) => pocket.code === value);
 
-    this.setState({ fromValue: value });
     selectPocketFrom(selectedValue);
   };
 
@@ -49,14 +40,12 @@ class Main extends Component {
     const { pockets, selectPocketTo } = this.props;
     const selectedValue = pockets.find((pocket) => pocket.code === value);
 
-    this.setState({ toValue: value });
     selectPocketTo(selectedValue);
   };
 
   render() {
-    const { pockets } = this.props;
+    const { pockets, fromPocket, toPocket } = this.props;
     const options = this.getOptions(pockets);
-    const { fromValue, toValue } = this.state;
     return (
       <form className={styles.main}>
         <div className={styles.content}>
@@ -66,7 +55,7 @@ class Main extends Component {
               id="from"
               label="From"
               onSelect={this.selectionFromHandler}
-              selectedValue={fromValue}
+              selectedValue={fromPocket}
             />
           </div>
           <div className={styles.selector}>
@@ -75,7 +64,7 @@ class Main extends Component {
               id="to"
               label="To"
               onSelect={this.selectionToHandler}
-              selectedValue={toValue}
+              selectedValue={toPocket}
             />
           </div>
           <Button className={styles.button}>Exchange</Button>
@@ -97,15 +86,20 @@ Main.propTypes = {
   selectPocketFrom: func.isRequired,
   selectPocketTo: func.isRequired,
   pockets: arrayOf(pocketShape),
+  fromPocket: pocketShape,
+  toPocket: pocketShape,
 };
 
 Main.defaultProps = {
   pockets: [],
+  fromPocket: {},
+  toPocket: {},
 };
 
-const mapStateToProps = ({ pockets, from }) => ({
+const mapStateToProps = ({ pockets, from, to }) => ({
   pockets,
-  from,
+  fromPocket: from,
+  toPocket: to,
 });
 
 export default connect(mapStateToProps, {

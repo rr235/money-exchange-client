@@ -18,10 +18,12 @@ const CurrencySelector = ({
         onSelect={onSelect}
         id={`select-${id}`}
         className={styles.dropdown}
-        selectedValue={selectedValue}
+        selectedValue={selectedValue.code}
       />
     )}
-    <Input label={label} id={`input-${id}`} onChange={onChange} />
+    {selectedValue &&
+      ` balance: ${selectedValue.symbol}${selectedValue.balance}`}
+    <Input label={label} id={`input-${id}`} onChange={onChange} type="number" />
   </div>
 );
 
