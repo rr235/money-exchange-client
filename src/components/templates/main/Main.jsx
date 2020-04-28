@@ -5,9 +5,11 @@ import styles from './main.styles.scss';
 import Button from '../../atoms/button';
 import CurrencySelector from '../../molecules/currencySelector';
 import {
-  fetchPockets,
-  selectPocketFrom,
-  selectPocketTo,
+  fetchPockets as fetchPocketsAction,
+  selectPocketFrom as selectPocketFromAction,
+  selectPocketTo as selectPocketToAction,
+  setAmountFrom as setAmountFromAction,
+  setAmountTo as setAmountToAction,
 } from '../../../actions';
 
 class Main extends Component {
@@ -24,7 +26,7 @@ class Main extends Component {
   };
 
   /**
-   * sets the 'from' selection for the exchange
+   * sets the pocket for 'from' selection of the exchange
    */
   selectionFromHandler = ({ value }) => {
     const { pockets, selectPocketFrom } = this.props;
@@ -34,7 +36,7 @@ class Main extends Component {
   };
 
   /**
-   * sets the 'to' selection for the exchange
+   * sets the pocket for 'to' selection of the exchange
    */
   selectionToHandler = ({ value }) => {
     const { pockets, selectPocketTo } = this.props;
@@ -43,9 +45,26 @@ class Main extends Component {
     selectPocketTo(selectedValue);
   };
 
+  /**
+   * sets amount for 'from' selection of the exchange
+   */
+  setAmountFromHandler = (e) => {
+    const { setAmountFrom } = this.props;
+    setAmountFrom(e.currentTarget.value);
+  };
+
+  /**
+   * sets amount for 'to' selection of the exchange
+   */
+  setAmountToHandler = (e) => {
+    const { setAmountTo } = this.props;
+    setAmountTo(e.currentTarget.value);
+  };
+
   render() {
     const { pockets, fromPocket, toPocket } = this.props;
     const options = this.getOptions(pockets);
+
     return (
       <form className={styles.main}>
         <div className={styles.content}>
@@ -53,21 +72,25 @@ class Main extends Component {
             <CurrencySelector
               options={options}
               id="from"
-              label="From"
+              label="From (-)"
               onSelect={this.selectionFromHandler}
-              selectedValue={fromPocket}
+              selectedValue={fromPocket.pocket}
+              onChange={this.setAmountFromHandler}
             />
           </div>
           <div className={styles.selector}>
             <CurrencySelector
               options={options}
               id="to"
-              label="To"
+              label="To (+)"
               onSelect={this.selectionToHandler}
-              selectedValue={toPocket}
+              selectedValue={toPocket.pocket}
+              onChange={this.setAmountToHandler}
             />
           </div>
-          <Button className={styles.button}>Exchange</Button>
+          <Button id="btnExchange" className={styles.button} type="submit">
+            Exchange
+          </Button>
         </div>
       </form>
     );
@@ -85,6 +108,8 @@ Main.propTypes = {
   fetchPockets: func.isRequired,
   selectPocketFrom: func.isRequired,
   selectPocketTo: func.isRequired,
+  setAmountFrom: func.isRequired,
+  setAmountTo: func.isRequired,
   pockets: arrayOf(pocketShape),
   fromPocket: pocketShape,
   toPocket: pocketShape,
@@ -103,7 +128,9 @@ const mapStateToProps = ({ pockets, from, to }) => ({
 });
 
 export default connect(mapStateToProps, {
-  fetchPockets,
-  selectPocketFrom,
-  selectPocketTo,
+  fetchPockets: fetchPocketsAction,
+  selectPocketFrom: selectPocketFromAction,
+  selectPocketTo: selectPocketToAction,
+  setAmountFrom: setAmountFromAction,
+  setAmountTo: setAmountToAction,
 })(Main);

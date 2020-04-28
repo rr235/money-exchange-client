@@ -126,4 +126,4 @@ Dropdown.defaultProps = {
 };
 
 export default Dropdown;
-export { DropdownListItem };
+export { DropdownListItem, optionsShape };

@@ -1,4 +1,4 @@
-import Dropdown, { DropdownListItem } from './Dropdown';
+import Dropdown, { DropdownListItem, optionsShape } from './Dropdown';
 
 export default Dropdown;
-export { DropdownListItem };
+export { DropdownListItem, optionsShape };
