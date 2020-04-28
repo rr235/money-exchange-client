@@ -8,8 +8,8 @@
   "private": true,
   "scripts": {
     "start:dev": "webpack-dev-server --mode development",
-    "lint": "tslint -c tslint.json src/**/*.ts*",
-    "test:unit": "jest --testPathPattern=test\\.tsx$"
+    "lint": "eslint src/**/*.ts*",
+    "test:unit": "jest --testPathPattern=test\\.jsx$"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
