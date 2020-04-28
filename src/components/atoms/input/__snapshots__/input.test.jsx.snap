@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input  should render correctly (type="number") 1`] = `
+Array [
+  <label
+    className="label"
+    htmlFor="id"
+  >
+    label
+  </label>,
+  <input
+    className="input"
+    id="id"
+    onChange={[Function]}
+    type="number"
+    value=""
+  />,
+]
+`;
+
+exports[`Input  should render correctly (type="text") 1`] = `
+Array [
+  <label
+    className="label"
+    htmlFor="id"
+  >
+    label
+  </label>,
+  <input
+    className="input"
+    id="id"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />,
+]
+`;
