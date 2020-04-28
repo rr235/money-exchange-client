@@ -32,7 +32,7 @@ const Dropdown = ({ options, onSelect, className }) => {
   const optionsClassName = classNames(styles.options, {
     [styles.show]: showOptions,
   });
-  const buttonClassName = classNames(styles.button, className);
+  const dropdownClassName = classNames(styles.dropdown, className);
 
   const onOptionSelectHandler = ({ text, value }) => {
     setShowOptions(false);
@@ -45,12 +45,12 @@ const Dropdown = ({ options, onSelect, className }) => {
   };
 
   return (
-    <div className={styles.dropdown}>
+    <div className={dropdownClassName}>
       <button
         type="button"
         aria-haspopup="listbox"
         onClick={onClickHandler}
-        className={buttonClassName}
+        className={styles.button}
       >
         {getSelection(options)}
       </button>

@@ -1,19 +1,15 @@
-import React, { Component, MouseEvent } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from './button.styles.scss';
 
-class Button extends Component {
-  render() {
-    const { children, className, onClick } = this.props;
-    return (
-      <button
-        className={classNames(styles.button, className)}
-        onClick={onClick}
-      >
-        {children}
-      </button>
-    );
-  }
-}
+const Button = ({ children, className, onClick, type }) => (
+  <button
+    className={classNames(styles.button, className)}
+    onClick={onClick}
+    type={type}
+  >
+    {children}
+  </button>
+);
 
 export default Button;

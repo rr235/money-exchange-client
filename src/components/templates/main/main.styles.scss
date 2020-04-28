@@ -1,3 +1,20 @@
+$wide-device-width: 768px;
+
 .main {
   background-color: #f3f4f5;
+  height: 100vh;
+  width: 100vw;
+}
+
+.content {
+  padding-top: 3rem;
+
+  @media screen and (min-width: $wide-device-width) {
+    margin: auto;
+    max-width: $wide-device-width;
+  }
+}
+
+.selector {
+  margin-bottom: 2rem;
 }
