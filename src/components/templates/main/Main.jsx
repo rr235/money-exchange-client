@@ -95,6 +95,7 @@ class Main extends Component {
               selectedValue={fromPocket.pocket}
               onChange={this.setAmountFromHandler}
               inputValue={fromPocket.amount}
+              exceedsBalance={fromPocket.exceedsBalance}
             />
           </div>
           <div className={styles.selector}>
@@ -109,7 +110,12 @@ class Main extends Component {
             />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button id="btnExchange" className={styles.button} type="submit">
+            <Button
+              id="btnExchange"
+              className={styles.button}
+              type="submit"
+              isDisabled={fromPocket.exceedsBalance}
+            >
               Exchange
             </Button>
           </div>

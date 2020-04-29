@@ -42,6 +42,7 @@ const Input = ({ label, id, onChange, className, type, value }) => {
         className={styles.input}
         value={input}
         onChange={onChangeHandler}
+        autoComplete="off"
       />
     </>
   );

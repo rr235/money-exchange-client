@@ -1,5 +1,14 @@
 import React from 'react';
-import { func, string, shape, number, arrayOf, oneOfType } from 'prop-types';
+import classNames from 'classnames';
+import {
+  func,
+  string,
+  shape,
+  number,
+  arrayOf,
+  oneOfType,
+  bool,
+} from 'prop-types';
 import Input from '../../atoms/input';
 import Dropdown, { optionsShape } from '../../atoms/dropdown';
 import styles from './currencySelector.styles.scss';
@@ -12,31 +21,40 @@ const CurrencySelector = ({
   id,
   selectedValue,
   inputValue,
-}) => (
-  <div>
-    {options.length && (
-      <Dropdown
-        options={options}
-        onSelect={onSelect}
-        id={`select-${id}`}
-        className={styles.dropdown}
-        selectedValue={selectedValue.code}
+  exceedsBalance,
+}) => {
+  const balanceClassName = classNames(styles.balance, {
+    [styles.exceedsBalance]: exceedsBalance,
+  });
+  return (
+    <div>
+      {options.length && (
+        <Dropdown
+          options={options}
+          onSelect={onSelect}
+          id={`select-${id}`}
+          className={styles.dropdown}
+          selectedValue={selectedValue.code}
+        />
+      )}
+      <span className={balanceClassName}>
+        {'Balance: '}
+        {selectedValue.symbol}
+        {selectedValue.balance}
+      </span>
+      <Input
+        label={label}
+        id={`input-${id}`}
+        onChange={onChange}
+        type="number"
+        value={inputValue}
       />
-    )}
-    <span className={styles.balance}>
-      {'Balance: '}
-      {selectedValue.symbol}
-      {selectedValue.balance}
-    </span>
-    <Input
-      label={label}
-      id={`input-${id}`}
-      onChange={onChange}
-      type="number"
-      value={inputValue}
-    />
-  </div>
-);
+      <div className={styles.exceedsBalanceMessage}>
+        {exceedsBalance && <span>Exceeds Balance</span>}
+      </div>
+    </div>
+  );
+};
 
 CurrencySelector.propTypes = {
   options: arrayOf(optionsShape).isRequired,
@@ -51,6 +69,7 @@ CurrencySelector.propTypes = {
     balance: number,
   }),
   inputValue: oneOfType([string, number]),
+  exceedsBalance: bool,
 };
 
 CurrencySelector.defaultProps = {
@@ -59,6 +78,7 @@ CurrencySelector.defaultProps = {
   label: '',
   selectedValue: {},
   inputValue: null,
+  exceedsBalance: false,
 };
 
 export default CurrencySelector;
