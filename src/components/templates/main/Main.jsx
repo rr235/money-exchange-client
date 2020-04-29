@@ -108,9 +108,11 @@ class Main extends Component {
               inputValue={toPocket.amount}
             />
           </div>
-          <Button id="btnExchange" className={styles.button} type="submit">
-            Exchange
-          </Button>
+          <div className={styles.buttonWrapper}>
+            <Button id="btnExchange" className={styles.button} type="submit">
+              Exchange
+            </Button>
+          </div>
         </div>
       </form>
     );
