@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CurrencySelector should render correctly (type="number") 1`] = `
+exports[`CurrencySelector should render correctly 1`] = `
 <div>
   <div
     className="dropdown dropdown"
@@ -8,11 +8,11 @@ exports[`CurrencySelector should render correctly (type="number") 1`] = `
     <button
       aria-haspopup="listbox"
       className="button"
-      id="select-from"
+      id="select-id"
       onClick={[Function]}
       type="button"
     >
-      option1
+      option2
     </button>
     <ul
       className="options"
@@ -57,17 +57,19 @@ exports[`CurrencySelector should render correctly (type="number") 1`] = `
     className="balance"
   >
     Balance: 
+    E
+    10
   </span>
   <label
     className="label"
-    htmlFor="input-from"
+    htmlFor="input-id"
   >
-    From
+    label
   </label>
   <input
     autoComplete="off"
     className="input"
-    id="input-from"
+    id="input-id"
     onChange={[Function]}
     type="text"
     value={null}
