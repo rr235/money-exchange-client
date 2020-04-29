@@ -58,14 +58,14 @@ export const setAmountTo = (amount) => (dispatch) => {
   dispatch({ type: SET_AMOUNT_TO, payload: amount });
 };
 
-export const exchangeAmountFrom = ({ amount, rate }) => async (dispatch) => {
+export const setExchangeAmountFrom = ({ amount, rate }) => async (dispatch) => {
   dispatch({
     type: SET_AMOUNT_TO,
     payload: Number((amount * rate).toFixed(2)),
   });
 };
 
-export const exchangeAmountTo = ({ amount, rate }) => async (dispatch) => {
+export const setExchangeAmountTo = ({ amount, rate }) => async (dispatch) => {
   dispatch({
     type: SET_AMOUNT_FROM,
     payload: Number((amount / rate).toFixed(2)),

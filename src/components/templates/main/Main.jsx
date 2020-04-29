@@ -10,8 +10,8 @@ import {
   selectPocketTo as selectPocketToAction,
   setAmountFrom as setAmountFromAction,
   setAmountTo as setAmountToAction,
-  exchangeAmountFrom as exchangeAmountFromAction,
-  exchangeAmountTo as exchangeAmountToAction,
+  setExchangeAmountFrom as exchangeAmountFromAction,
+  setExchangeAmountTo as exchangeAmountToAction,
   setExchangeRate as setExchangeRateAction,
   exchangeCurrency as exchangeCurrencyAction,
 } from '../../../actions';
@@ -71,10 +71,10 @@ class Main extends Component {
    * sets amount for 'from' selection of the exchange
    */
   setAmountFromHandler = (e) => {
-    const { setAmountFrom, exchangeAmountFrom, exchangeRate } = this.props;
+    const { setAmountFrom, setExchangeAmountFrom, exchangeRate } = this.props;
     const amount = Number(e.currentTarget.value);
     setAmountFrom(amount);
-    exchangeAmountFrom({
+    setExchangeAmountFrom({
       amount,
       rate: exchangeRate,
     });
@@ -84,10 +84,10 @@ class Main extends Component {
    * sets amount for 'to' selection of the exchange
    */
   setAmountToHandler = (e) => {
-    const { setAmountTo, exchangeAmountTo, exchangeRate } = this.props;
+    const { setAmountTo, setExchangeAmountTo, exchangeRate } = this.props;
     const amount = Number(e.currentTarget.value);
     setAmountTo(amount);
-    exchangeAmountTo({
+    setExchangeAmountTo({
       amount,
       rate: exchangeRate,
     });
@@ -167,8 +167,8 @@ Main.propTypes = {
   selectPocketTo: func.isRequired,
   setAmountFrom: func.isRequired,
   setAmountTo: func.isRequired,
-  exchangeAmountFrom: func.isRequired,
-  exchangeAmountTo: func.isRequired,
+  setExchangeAmountFrom: func.isRequired,
+  setExchangeAmountTo: func.isRequired,
   setExchangeRate: func.isRequired,
   exchangeCurrency: func.isRequired,
   pockets: arrayOf(pocketShape),
@@ -196,8 +196,8 @@ export default connect(mapStateToProps, {
   selectPocketTo: selectPocketToAction,
   setAmountFrom: setAmountFromAction,
   setAmountTo: setAmountToAction,
-  exchangeAmountFrom: exchangeAmountFromAction,
-  exchangeAmountTo: exchangeAmountToAction,
+  setExchangeAmountFrom: exchangeAmountFromAction,
+  setExchangeAmountTo: exchangeAmountToAction,
   setExchangeRate: setExchangeRateAction,
   exchangeCurrency: exchangeCurrencyAction,
 })(Main);

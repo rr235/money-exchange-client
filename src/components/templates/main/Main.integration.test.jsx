@@ -9,9 +9,9 @@ import DropDown from '../../atoms/dropdown';
 import {
   fetchPockets,
   setAmountFrom,
-  exchangeAmountFrom,
+  setExchangeAmountFrom,
   setAmountTo,
-  exchangeAmountTo,
+  setExchangeAmountTo,
   selectPocketFrom,
   selectPocketTo,
   setExchangeRate,
@@ -91,7 +91,7 @@ describe('Main', () => {
     // should fire actions creators that sets correct 'from' amount
     // and set correct 'to' amount based on conversion rate
     expect(setAmountFrom).toHaveBeenCalledWith(5);
-    expect(exchangeAmountFrom).toHaveBeenCalledWith({
+    expect(setExchangeAmountFrom).toHaveBeenCalledWith({
       amount: 5,
       rate: mockExchangeRate,
     });
@@ -109,7 +109,7 @@ describe('Main', () => {
     // should fire actions creators that sets correct 'to' amount
     // and set correct 'from' amount based on conversion rate
     expect(setAmountTo).toHaveBeenCalledWith(5);
-    expect(exchangeAmountTo).toHaveBeenCalledWith({
+    expect(setExchangeAmountTo).toHaveBeenCalledWith({
       amount: 5,
       rate: mockExchangeRate,
     });
