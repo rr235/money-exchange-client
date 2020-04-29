@@ -9,6 +9,7 @@ Array [
     label
   </label>,
   <input
+    autoComplete="off"
     className="input"
     id="id"
     onChange={[Function]}
@@ -27,6 +28,7 @@ Array [
     label
   </label>,
   <input
+    autoComplete="off"
     className="input"
     id="id"
     onChange={[Function]}

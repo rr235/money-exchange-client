@@ -3,6 +3,7 @@
 exports[`Button should render correctly 1`] = `
 <button
   className="button"
+  disabled={false}
   id="id"
   onClick={[Function]}
   type="button"

@@ -64,11 +64,15 @@ exports[`CurrencySelector should render correctly (type="number") 1`] = `
     From
   </label>
   <input
+    autoComplete="off"
     className="input"
     id="input-from"
     onChange={[Function]}
     type="text"
     value={null}
+  />
+  <div
+    className="exceedsBalanceMessage"
   />
 </div>
 `;
