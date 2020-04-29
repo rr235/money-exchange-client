@@ -21,6 +21,8 @@ export const fetchPockets = () => async (dispatch) => {
     type: FETCH_POCKETS,
     payload: data,
   });
+
+  // select pockets
   dispatch({ type: SELECT_POCKET_FROM, payload: data[0] });
   dispatch({ type: SELECT_POCKET_TO, payload: data[1] });
 

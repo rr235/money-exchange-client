@@ -15,10 +15,26 @@ import {
   setExchangeRate as setExchangeRateAction,
 } from '../../../actions';
 
+const INTERVAL = 10000;
+
 class Main extends Component {
   componentDidMount() {
-    const { fetchPockets } = this.props;
+    const { fetchPockets, setExchangeRate } = this.props;
+    // get all available pockets
     fetchPockets();
+
+    // keep querying for latest exchange rates
+    this.intervalId = setInterval(() => {
+      const { fromPocket, toPocket } = this.props;
+      setExchangeRate({
+        from: fromPocket.pocket.code,
+        to: toPocket.pocket.code,
+      });
+    }, INTERVAL);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
   }
 
   /**
