@@ -13,6 +13,7 @@ import {
   exchangeAmountFrom as exchangeAmountFromAction,
   exchangeAmountTo as exchangeAmountToAction,
   setExchangeRate as setExchangeRateAction,
+  exchangeCurrency as exchangeCurrencyAction,
 } from '../../../actions';
 
 const INTERVAL = 10000;
@@ -92,6 +93,17 @@ class Main extends Component {
     });
   };
 
+  exchangeHandler = (e) => {
+    e.preventDefault();
+    const { exchangeCurrency, fromPocket, toPocket } = this.props;
+
+    exchangeCurrency({
+      from: fromPocket.pocket.code,
+      to: toPocket.pocket.code,
+      amount: fromPocket.amount,
+    });
+  };
+
   render() {
     const { pockets, fromPocket, toPocket, exchangeRate } = this.props;
     const options = this.getOptions(pockets);
@@ -131,6 +143,7 @@ class Main extends Component {
               className={styles.button}
               type="submit"
               isDisabled={fromPocket.exceedsBalance}
+              onClick={this.exchangeHandler}
             >
               Exchange
             </Button>
@@ -157,6 +170,7 @@ Main.propTypes = {
   exchangeAmountFrom: func.isRequired,
   exchangeAmountTo: func.isRequired,
   setExchangeRate: func.isRequired,
+  exchangeCurrency: func.isRequired,
   pockets: arrayOf(pocketShape),
   fromPocket: shape({ pocket: pocketShape, amount: number }),
   toPocket: shape({ pocket: pocketShape, amount: number }),
@@ -185,4 +199,5 @@ export default connect(mapStateToProps, {
   exchangeAmountFrom: exchangeAmountFromAction,
   exchangeAmountTo: exchangeAmountToAction,
   setExchangeRate: setExchangeRateAction,
+  exchangeCurrency: exchangeCurrencyAction,
 })(Main);

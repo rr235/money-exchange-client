@@ -28,7 +28,7 @@ const CurrencySelector = ({
   });
   return (
     <div>
-      {options.length && (
+      {!!options.length && (
         <Dropdown
           options={options}
           onSelect={onSelect}
