@@ -8,6 +8,7 @@ exports[`CurrencySelector should render correctly (type="number") 1`] = `
     <button
       aria-haspopup="listbox"
       className="button"
+      id="select-from"
       onClick={[Function]}
       type="button"
     >

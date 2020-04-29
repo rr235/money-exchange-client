@@ -9,7 +9,8 @@
   "scripts": {
     "start:dev": "webpack-dev-server --mode development",
     "lint": "eslint src/**/*.ts*",
-    "test:unit": "jest --testPathPattern=test\\.jsx$"
+    "test:unit": "jest --testPathPattern=test\\.jsx$",
+    "test:integration": "jest --testPathPattern=integration.test\\.jsx$"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -40,6 +41,7 @@
     "prettier": "^2.0.5",
     "prettier-stylelint": "^0.4.2",
     "react-test-renderer": "^16.13.1",
+    "redux-mock-store": "^1.5.4",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "source-map-loader": "^0.2.4",

@@ -42,7 +42,7 @@ const DropdownListItem = ({ value, text, selected, onClick }) => {
   );
 };
 
-const Dropdown = ({ options, onSelect, className, selectedValue }) => {
+const Dropdown = ({ options, onSelect, className, selectedValue, id }) => {
   const [showOptions, setShowOptions] = useState(false); // flag to show hide options
   const optionsClassName = classNames(styles.options, {
     [styles.show]: showOptions,
@@ -77,6 +77,7 @@ const Dropdown = ({ options, onSelect, className, selectedValue }) => {
         aria-haspopup="listbox"
         onClick={onClickHandler}
         className={styles.button}
+        id={id}
       >
         {getSelectionText()}
       </button>
@@ -117,6 +118,7 @@ Dropdown.propTypes = {
   onSelect: func,
   className: string,
   selectedValue: string,
+  id: string.isRequired,
 };
 
 Dropdown.defaultProps = {
