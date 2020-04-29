@@ -10,6 +10,9 @@ import {
   selectPocketTo as selectPocketToAction,
   setAmountFrom as setAmountFromAction,
   setAmountTo as setAmountToAction,
+  exchangeAmountFrom as exchangeAmountFromAction,
+  exchangeAmountTo as exchangeAmountToAction,
+  setExchangeRate as setExchangeRateAction,
 } from '../../../actions';
 
 class Main extends Component {
@@ -29,45 +32,60 @@ class Main extends Component {
    * sets the pocket for 'from' selection of the exchange
    */
   selectionFromHandler = ({ value }) => {
-    const { pockets, selectPocketFrom } = this.props;
+    const { pockets, selectPocketFrom, toPocket, setExchangeRate } = this.props;
     const selectedValue = pockets.find((pocket) => pocket.code === value);
 
     selectPocketFrom(selectedValue);
+    setExchangeRate({ from: selectedValue.code, to: toPocket.pocket.code });
   };
 
   /**
    * sets the pocket for 'to' selection of the exchange
    */
   selectionToHandler = ({ value }) => {
-    const { pockets, selectPocketTo } = this.props;
+    const { pockets, selectPocketTo, fromPocket, setExchangeRate } = this.props;
     const selectedValue = pockets.find((pocket) => pocket.code === value);
 
     selectPocketTo(selectedValue);
+    setExchangeRate({ from: fromPocket.pocket.code, to: selectedValue.code });
   };
 
   /**
    * sets amount for 'from' selection of the exchange
    */
   setAmountFromHandler = (e) => {
-    const { setAmountFrom } = this.props;
-    setAmountFrom(e.currentTarget.value);
+    const { setAmountFrom, exchangeAmountFrom, exchangeRate } = this.props;
+    const amount = Number(e.currentTarget.value);
+    setAmountFrom(amount);
+    exchangeAmountFrom({
+      amount,
+      rate: exchangeRate,
+    });
   };
 
   /**
    * sets amount for 'to' selection of the exchange
    */
   setAmountToHandler = (e) => {
-    const { setAmountTo } = this.props;
-    setAmountTo(e.currentTarget.value);
+    const { setAmountTo, exchangeAmountTo, exchangeRate } = this.props;
+    const amount = Number(e.currentTarget.value);
+    setAmountTo(amount);
+    exchangeAmountTo({
+      amount,
+      rate: exchangeRate,
+    });
   };
 
   render() {
-    const { pockets, fromPocket, toPocket } = this.props;
+    const { pockets, fromPocket, toPocket, exchangeRate } = this.props;
     const options = this.getOptions(pockets);
 
     return (
       <form className={styles.main}>
         <div className={styles.content}>
+          <span className={styles.exchangeRate}>
+            {`1 ${fromPocket.pocket.code} = ${exchangeRate} ${toPocket.pocket.code}`}
+          </span>
           <div className={styles.selector}>
             <CurrencySelector
               options={options}
@@ -112,9 +130,13 @@ Main.propTypes = {
   selectPocketTo: func.isRequired,
   setAmountFrom: func.isRequired,
   setAmountTo: func.isRequired,
+  exchangeAmountFrom: func.isRequired,
+  exchangeAmountTo: func.isRequired,
+  setExchangeRate: func.isRequired,
   pockets: arrayOf(pocketShape),
-  fromPocket: pocketShape,
-  toPocket: pocketShape,
+  fromPocket: shape({ pocket: pocketShape, amount: number }),
+  toPocket: shape({ pocket: pocketShape, amount: number }),
+  exchangeRate: number.isRequired,
 };
 
 Main.defaultProps = {
@@ -123,10 +145,11 @@ Main.defaultProps = {
   toPocket: {},
 };
 
-const mapStateToProps = ({ pockets, from, to }) => ({
+const mapStateToProps = ({ pockets, from, to, exchangeRate }) => ({
   pockets,
   fromPocket: from,
   toPocket: to,
+  exchangeRate,
 });
 
 export default connect(mapStateToProps, {
@@ -135,4 +158,7 @@ export default connect(mapStateToProps, {
   selectPocketTo: selectPocketToAction,
   setAmountFrom: setAmountFromAction,
   setAmountTo: setAmountToAction,
+  exchangeAmountFrom: exchangeAmountFromAction,
+  exchangeAmountTo: exchangeAmountToAction,
+  setExchangeRate: setExchangeRateAction,
 })(Main);
