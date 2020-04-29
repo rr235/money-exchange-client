@@ -12,8 +12,8 @@ Array [
     className="input"
     id="id"
     onChange={[Function]}
-    type="number"
-    value=""
+    type="text"
+    value={null}
   />,
 ]
 `;
@@ -31,7 +31,7 @@ Array [
     id="id"
     onChange={[Function]}
     type="text"
-    value=""
+    value={null}
   />,
 ]
 `;

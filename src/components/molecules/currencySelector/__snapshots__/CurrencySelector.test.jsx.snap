@@ -52,7 +52,11 @@ exports[`CurrencySelector should render correctly (type="number") 1`] = `
       </li>
     </ul>
   </div>
-   balance: undefinedundefined
+  <span
+    className="balance"
+  >
+    Balance: 
+  </span>
   <label
     className="label"
     htmlFor="input-from"
@@ -63,8 +67,8 @@ exports[`CurrencySelector should render correctly (type="number") 1`] = `
     className="input"
     id="input-from"
     onChange={[Function]}
-    type="number"
-    value=""
+    type="text"
+    value={null}
   />
 </div>
 `;
