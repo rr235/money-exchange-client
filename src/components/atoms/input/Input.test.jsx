@@ -29,7 +29,7 @@ describe('Input ', () => {
   });
 
   it('should contain input field', () => {
-    expect(component.find('input[type="number"]')).toHaveLength(1);
+    expect(component.find('input[type="text"]')).toHaveLength(1);
   });
 
   it('should show correct label', () => {
@@ -46,7 +46,7 @@ describe('Input (number) - Functionality', () => {
   });
 
   it('should take correct input', () => {
-    let input = component.find('input[type="number"]');
+    let input = component.find('input[type="text"]');
 
     // simulate on change with valid input
     act(() => {
@@ -59,13 +59,13 @@ describe('Input (number) - Functionality', () => {
 
     // update state and get latest ref to input
     component.update();
-    input = component.find('input[type="number"]');
+    input = component.find('input[type="text"]');
 
     expect(input.prop('value')).toBe(100);
   });
 
   it('should show previous input when input is invalid', () => {
-    let input = component.find('input[type="number"]');
+    let input = component.find('input[type="text"]');
 
     // simulate on change with VALID input
     act(() => {
@@ -78,7 +78,7 @@ describe('Input (number) - Functionality', () => {
 
     // update state and get latest ref to input
     component.update();
-    input = component.find('input[type="number"]');
+    input = component.find('input[type="text"]');
     expect(input.prop('value')).toBe(100);
 
     // simulate on change with INVALID input
@@ -92,7 +92,7 @@ describe('Input (number) - Functionality', () => {
 
     // update state and get latest ref to input
     component.update();
-    input = component.find('input[type="number"]');
+    input = component.find('input[type="text"]');
 
     expect(input.prop('value')).toBe(100);
   });

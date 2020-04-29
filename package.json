@@ -70,7 +70,7 @@
     },
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.js*",
+      "src/**/*.jsx",
       "!src/index.jsx"
     ]
   }
