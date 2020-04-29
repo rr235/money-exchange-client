@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "start:dev": "webpack-dev-server --mode development",
-    "lint": "eslint src/**/*.ts*",
+    "lint": "eslint src/**/*.js*",
     "test:unit": "jest --testPathPattern=test\\.jsx$",
     "test:integration": "jest --testPathPattern=integration.test\\.jsx$"
   },
