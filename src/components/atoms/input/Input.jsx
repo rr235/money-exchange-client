@@ -10,21 +10,21 @@ const Input = ({ label, id, onChange, className, type, value }) => {
     setInput(value);
   }, [value]);
 
-  const isValidType = (selectedValue, inputType) => {
+  const isValidType = (inputValue, inputType) => {
     if (inputType === 'number') {
       const valueRegex = /^\d*(\.\d{0,2})?$/; // limits to 2 decimal points
-      return selectedValue && valueRegex.test(selectedValue);
+      return (inputValue && valueRegex.test(inputValue)) || inputValue === '';
     }
 
     return true;
   };
 
   const onChangeHandler = (e) => {
-    const { value: selectedValue } = e.currentTarget;
+    const { value: inputValue } = e.currentTarget;
 
     // update only if input is valid
-    if (isValidType(selectedValue, type)) {
-      setInput(selectedValue);
+    if (isValidType(inputValue, type)) {
+      setInput(inputValue);
       if (onChange) {
         onChange(e);
       }
@@ -37,7 +37,7 @@ const Input = ({ label, id, onChange, className, type, value }) => {
         {label}
       </label>
       <input
-        type={type}
+        type="text"
         id={id}
         className={styles.input}
         value={input}
